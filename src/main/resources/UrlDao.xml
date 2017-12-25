@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.leixin.dao.UrlDao">
+    <insert id="insert" keyProperty="" parameterType="cn.leixin.dao.Url">
+        INSERT INTO url (id,url,name,urlavi,urlimg) VALUE (#{id}, #{url}, #{name},#{urlavi},#{urlimg})
+    </insert>
+
+    <select id="selectall" resultType="cn.leixin.dao.Url">
+        SELECT * FROM url
+    </select>
+
+    <select id="selectname" parameterType="cn.leixin.dao.Url" resultType="cn.leixin.dao.Url">
+        SELECT * FROM url
+        <where>
+            <if test="name != null">
+                AND name like CONCAT('%','${name}','%' )
+            </if>
+        </where>
+    </select>
+</mapper>
